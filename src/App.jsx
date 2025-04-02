@@ -1,5 +1,6 @@
 // page
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import LoadingPage from "./components/LoadingPage";
 
 // configuration
@@ -11,6 +12,7 @@ import Layout from "./components/layout/Layout";
 import ScrollToTop from "./hooks/useScrollToTop";
 import { Route, Routes } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
+import Test from "./pages/Test";
 
 function App() {
   useTheme();
@@ -29,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="test" element={<Test />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
