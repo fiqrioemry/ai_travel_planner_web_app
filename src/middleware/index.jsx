@@ -7,6 +7,16 @@ export const ProtectedRoute = ({ children }) => {
   const { isSignedIn } = useUser();
 
   if (!isSignedIn) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  return <Fragment>{children}</Fragment>;
+};
+
+export const NonProtectedRoute = ({ children }) => {
+  const { isSignedIn } = useUser();
+
+  if (isSignedIn) {
     return <Navigate to="/" />;
   }
 

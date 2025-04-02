@@ -5,13 +5,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import Logo from "@/components/Logo";
-import { useUser } from "@clerk/clerk-react";
 import { useTheme } from "@/hooks/useTheme";
 import DarkModeToggle from "../DarkModeToggle";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import ClerkLogin from "@/components/ClerkLogin";
-import { LogOut, Moon, PlusCircle, Sun } from "lucide-react";
+import { Moon, PlusCircle, Sun } from "lucide-react";
+import { useUser, SignOutButton } from "@clerk/clerk-react";
 
 function Header() {
   const { user } = useUser();
@@ -31,7 +30,9 @@ function Header() {
               <div className="flex items-center justify-between px-2 gap-2">
                 <DarkModeToggle isDark={isDark} toggleDark={toggleDark} />
               </div>
-              <ClerkLogin />
+              <a href="/sign-in">
+                <Button>Sign In</Button>
+              </a>
             </div>
           )}
         </div>
@@ -42,7 +43,7 @@ function Header() {
 
 export default Header;
 
-const UserMenu = ({ user, logout, isDark, toggleDark }) => {
+const UserMenu = ({ user, isDark, toggleDark }) => {
   return (
     <div className="flex items-center gap-3">
       <a href="/resume/create-resume">
@@ -81,13 +82,11 @@ const UserMenu = ({ user, logout, isDark, toggleDark }) => {
 
           <a href="resume">
             <Button className="w-full flex justify-start gap-2">
-              <LogOut className="w-4 h-4" />
               My-resume
             </Button>
           </a>
-          <Button onClick={logout} className="w-full flex justify-start gap-2">
-            <LogOut className="w-4 h-4" />
-            Logout
+          <Button>
+            <SignOutButton />
           </Button>
         </PopoverContent>
       </Popover>
