@@ -15,7 +15,7 @@ import { chatSession } from "@/api/geminiAI";
 import { useAuthStore } from "./useAuthStore";
 import { generatePromptText, generateTemplate } from "@/config/prompt";
 
-export const useTripStore = create(
+export const useResumeStore = create(
   persist((set, get) => ({
     trip: null,
     trips: null,
