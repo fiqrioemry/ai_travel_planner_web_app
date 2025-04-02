@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Fragment } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useUser } from "@clerk/clerk-react";
 
 export const ProtectedRoute = ({ children }) => {
-  const { user } = useAuthStore();
+  const { isSignedIn } = useUser();
 
-  if (!user) {
+  if (!isSignedIn) {
     return <Navigate to="/" />;
   }
 

@@ -5,17 +5,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import Logo from "@/components/Logo";
+import { useUser } from "@clerk/clerk-react";
 import { useTheme } from "@/hooks/useTheme";
 import DarkModeToggle from "../DarkModeToggle";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import GoogleLogin from "@/components/GoogleLogin";
-import { useAuthStore } from "@/store/useAuthStore";
+import ClerkLogin from "@/components/ClerkLogin";
 import { LogOut, Moon, PlusCircle, Sun } from "lucide-react";
 
 function Header() {
+  const { user } = useUser();
   const { isDark, toggleDark } = useTheme();
-  const { user, login, logout } = useAuthStore();
 
   return (
     <nav className="border-b py-4 px-6 md:px-0">
@@ -25,18 +25,13 @@ function Header() {
         </a>
         <div>
           {user ? (
-            <UserMenu
-              user={user}
-              logout={logout}
-              isDark={isDark}
-              toggleDark={toggleDark}
-            />
+            <UserMenu user={user} isDark={isDark} toggleDark={toggleDark} />
           ) : (
             <div className="flex gap-2">
               <div className="flex items-center justify-between px-2 gap-2">
                 <DarkModeToggle isDark={isDark} toggleDark={toggleDark} />
               </div>
-              <GoogleLogin login={login} />
+              <ClerkLogin />
             </div>
           )}
         </div>
@@ -59,14 +54,14 @@ const UserMenu = ({ user, logout, isDark, toggleDark }) => {
       <Popover>
         <PopoverTrigger>
           <img
-            src={user?.photoURL}
-            alt={user?.displayName}
+            src={user?.imageUrl}
+            alt={user?.fullName}
             className="h-9 w-9 rounded-full"
           />
         </PopoverTrigger>
         <PopoverContent className="w-48 p-2 space-y-4">
           <div className="font-semibold text-sm px-2">
-            Halo, {user.displayName}
+            Halo, {user.fullName}
           </div>
 
           {/* Toggle Switch */}
