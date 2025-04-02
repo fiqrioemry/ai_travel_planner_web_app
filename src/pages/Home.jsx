@@ -16,8 +16,8 @@ function Test() {
 
         <div>
           <a href="/dashboard">
-            <Button size="lg" className="w-40 py-6 text-md md:text-lg">
-              Get Started
+            <Button className="p-6 rounded-full w-44 text-md md:text-lg">
+              Generate CV
               <ArrowRight size={24} className="ml-2" />
             </Button>
           </a>
