@@ -50,16 +50,12 @@ export default Header;
 const UserMenu = ({ user, logout, isDark, toggleDark }) => {
   return (
     <div className="flex items-center gap-3">
-      <a href="/create-trip">
+      <a href="/resume/create-resume">
         <Button className="rounded-full px-4">
-          <PlusCircle /> <span className="hidden md:block">Trip baru</span>
+          <PlusCircle /> <span className="hidden md:block">resume</span>
         </Button>
       </a>
-      <a href="/my-trips">
-        <Button variant="outline" className="rounded-full px-4">
-          Perjalanku
-        </Button>
-      </a>
+
       <Popover>
         <PopoverTrigger>
           <img
@@ -88,6 +84,12 @@ const UserMenu = ({ user, logout, isDark, toggleDark }) => {
             <Switch checked={isDark} onCheckedChange={toggleDark} />
           </div>
 
+          <a href="resume">
+            <Button className="w-full flex justify-start gap-2">
+              <LogOut className="w-4 h-4" />
+              My-resume
+            </Button>
+          </a>
           <Button onClick={logout} className="w-full flex justify-start gap-2">
             <LogOut className="w-4 h-4" />
             Logout

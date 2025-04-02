@@ -1,91 +1,72 @@
-/* eslint-disable react/prop-types */
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Compass, Map, Hotel } from "lucide-react";
-import { useAuthStore } from "@/store/useAuthStore";
+import { ArrowRight, Sparkles, FileText, Brain } from "lucide-react";
 
-const Home = () => {
-  const navigate = useNavigate();
-  const { login, user } = useAuthStore();
-
-  const handleNewTrip = async () => {
-    if (!user) {
-      await login();
-      navigate("/create-trip");
-    } else {
-      navigate("/create-trip");
-    }
-  };
-
+function Test() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 space-y-20">
-      {/* Hero */}
-      <motion.div
-        className="max-w-2xl mb-8"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-          Temukan Petualangan Berikutnya Bersama AI
-          <br />
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent ">
-            Travelo
-          </span>
+    <section className="container mx-auto">
+      <div className="mt-12 py-12 text-center">
+        <h1 className="mb-2 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+          Craft the <span className="text-primary">ATS Friendly Resume</span>
         </h1>
-        <p className="text-muted-foreground text-lg mb-10">
-          Rancang perjalanan impianmu hanya dalam hitungan detik. Didukung oleh
-          AI pintar, kami bantu kamu memilih destinasi, menyusun itinerary, dan
-          menemukan hotel terbaik — secara otomatis dan personal.
-        </p>
-        <Button size="lg" onClick={handleNewTrip} className="rounded-full px-4">
-          Mulai Sekarang
-        </Button>
-      </motion.div>
 
-      {/* Fitur */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl"
-        initial="hidden"
-        animate="show"
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.2,
-            },
-          },
-        }}
-      >
-        <Feature
-          icon={<Compass className="w-8 h-8 text-blue-500" />}
-          title="Destinasi Personalisasi"
-          description="AI kami memahami preferensimu dan merekomendasikan tempat terbaik sesuai gaya traveling kamu."
-        />
-        <Feature
-          icon={<Map className="w-8 h-8 text-purple-500" />}
-          title="Itinerary Otomatis"
-          description="Dapatkan rencana perjalanan lengkap harian, waktu terbaik untuk berkunjung, dan rute efisien."
-        />
-        <Feature
-          icon={<Hotel className="w-8 h-8 text-pink-500" />}
-          title="Rekomendasi Hotel"
-          description="Temukan penginapan dengan harga terbaik dan ulasan terpercaya, semuanya dalam satu klik."
-        />
-      </motion.div>
+        <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+          Let AI do the heavy lifting — create job-winning resumes in minutes,
+          not hours.
+        </p>
+
+        <div>
+          <a href="/dashboard">
+            <Button size="lg" className="w-40 py-6 text-md md:text-lg">
+              Get Started
+              <ArrowRight size={24} className="ml-2" />
+            </Button>
+          </a>
+        </div>
+      </div>
+
+      <div className="mt-10 mb-10 text-center">
+        <h2 className="font-bold text-3xl mb-2">🚀 How It Works?</h2>
+        <p className="text-lg md:text-xl text-gray-500 mb-8">
+          Your AI-powered resume journey in just three simple steps.
+        </p>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="block rounded-xl border p-8 shadow-xl transition hover:border-primary/20 hover:shadow-primary/20">
+            <FileText className="h-10 w-10 text-primary mx-auto" />
+            <h3 className="mt-4 text-xl font-bold text-black dark:text-white">
+              Fill Out Your Details ✍️
+            </h3>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              Start by entering your personal info, work history, education,
+              skills, and more through our guided form.
+            </p>
+          </div>
+
+          <div className="block rounded-xl border p-8 shadow-xl transition hover:border-primary/20 hover:shadow-primary/20">
+            <Brain className="h-10 w-10 text-primary mx-auto" />
+            <h3 className="mt-4 text-xl font-bold text-black dark:text-white">
+              Let AI Optimize It 🤖
+            </h3>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              Our smart AI enhances your content to make it ATS-friendly and
+              professionally written for your industry.
+            </p>
+          </div>
+
+          <div className="block rounded-xl border p-8 shadow-xl transition hover:border-primary/20 hover:shadow-primary/20">
+            <Sparkles className="h-10 w-10 text-primary mx-auto" />
+            <h3 className="mt-4 text-xl font-bold text-black dark:text-white">
+              Download & Share 📄
+            </h3>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              Instantly preview your resume, download it in PDF format, and
+              share it with potential employers.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
-};
+}
 
-const Feature = ({ icon, title, description }) => {
-  return (
-    <div className="text-left space-y-3 p-4 rounded-md hover:bg-muted/30 transition">
-      <div>{icon}</div>
-      <h3 className="font-semibold text-lg">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
-    </div>
-  );
-};
-
-export default Home;
+export default Test;
