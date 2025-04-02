@@ -1,9 +1,5 @@
 // page
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import SavedTrip from "./pages/SavedTrip";
-import CreateTrip from "./pages/CreateTrip";
-import DetailTrip from "./pages/DetailTrip";
 import LoadingPage from "./components/LoadingPage";
 
 // configuration
@@ -33,31 +29,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route
-            path="my-trips"
-            element={
-              <ProtectedRoute>
-                <SavedTrip />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="trip/:tripId"
-            element={
-              <ProtectedRoute>
-                <DetailTrip />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="create-trip"
-            element={
-              <ProtectedRoute>
-                <CreateTrip />
-              </ProtectedRoute>
-            }
-          />
         </Route>
 
         <Route path="*" element={<NotFound />} />
