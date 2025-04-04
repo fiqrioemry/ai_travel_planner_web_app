@@ -1,13 +1,13 @@
 import Logo from "@/components/Logo";
+import { NotebookPen } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import { useUser, UserButton } from "@clerk/clerk-react";
 import DarkModeToggle from "@/components/DarkModeToggle";
-import { User } from "lucide-react";
 
 function Header() {
-  const { isDark, toggleDark } = useTheme();
   const { user } = useUser();
+  const { isDark, toggleDark } = useTheme();
 
   return (
     <nav className="border-b py-4 px-6 md:px-0">
@@ -22,9 +22,9 @@ function Header() {
           </div>
           {user ? (
             <div className="flex gap-2">
-              <a href="/dashboard">
+              <a href="/resume">
                 <Button className="px-4 rounded-full">
-                  <User />
+                  <NotebookPen />
                   resume
                 </Button>
               </a>
