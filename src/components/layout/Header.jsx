@@ -7,9 +7,9 @@ import {
 import Logo from "@/components/Logo";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
+import ManageAccount from "@/components/ManageAccount";
+import { Moon, Sun, LogOut, FileText } from "lucide-react";
 import { useUser, SignOutButton } from "@clerk/clerk-react";
-import { Moon, Sun, User, LogOut, FileText } from "lucide-react";
-import ManageAccount from "../ManageAccount";
 
 function Header() {
   const { user } = useUser();
@@ -40,7 +40,7 @@ function Header() {
 export default Header;
 
 const UserMenu = ({ user, isDark, toggleDark }) => {
-  const menuItemClass =
+  const menuClass =
     "flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer";
 
   return (
@@ -59,22 +59,22 @@ const UserMenu = ({ user, isDark, toggleDark }) => {
           </div>
 
           {/* Dark Mode Toggle */}
-          <div onClick={toggleDark} className={menuItemClass}>
+          <div onClick={toggleDark} className={menuClass}>
             {isDark ? <Moon size={18} /> : <Sun size={18} />}
             <span>{isDark ? "Dark Mode" : "Light Mode"}</span>
           </div>
 
           {/* manage account */}
-          <ManageAccount />
+          <ManageAccount menuClass={menuClass} />
 
           {/* Resume */}
-          <a href="/resume" className={menuItemClass}>
+          <a href="/resume" className={menuClass}>
             <FileText size={18} />
             <span>My Resume</span>
           </a>
 
           {/* Logout */}
-          <div className={menuItemClass}>
+          <div className={menuClass}>
             <LogOut size={18} />
             <SignOutButton signOutOptions={{ redirectUrl: "/" }} />
           </div>
