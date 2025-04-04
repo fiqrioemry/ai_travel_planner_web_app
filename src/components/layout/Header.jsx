@@ -7,6 +7,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 
 function Header() {
   const { user } = useUser();
+  console.log(user);
   const { isDark, toggleDark } = useTheme();
 
   return (
