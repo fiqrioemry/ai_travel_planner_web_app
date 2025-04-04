@@ -10,11 +10,17 @@ export const useResumeStore = create((set) => ({
   resumes: null,
   loading: false,
 
-  createNewResume: async (formData) => {
+  createNewResume: async (user, formData) => {
+    const user_id = user?.id;
+    const dataToInsert = {
+      ...formData,
+      user_id,
+    };
+
     try {
       const { data, error } = await supabase
         .from("resumes")
-        .insert([formData])
+        .insert([dataToInsert])
         .select()
         .single();
       if (error) throw error;
@@ -38,6 +44,22 @@ export const useResumeStore = create((set) => ({
       set({ resumes: data });
     } catch (error) {
       set({ resumes: [] });
+      console.error(error);
+    }
+  },
+
+  getResumeDetail: async (resumeId, userId) => {
+    try {
+      const { data, error } = await supabase
+        .from("resumes")
+        .select("*")
+        .eq("user_id", userId)
+        .eq("id", resumeId);
+
+      if (error) throw error;
+      set({ resume: data?.[0] || null });
+    } catch (error) {
+      set({ resume: null });
       console.error(error);
     }
   },

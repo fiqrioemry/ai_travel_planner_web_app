@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import LoadingPage from "@/components/LoadingPage";
-import CreateResume from "@/components/CreateResume";
 import { useResumeStore } from "@/store/useResumeStore";
+import CreateResume from "@/components/resume/CreateResume";
 
 const MyResume = () => {
   const { user } = useUser();

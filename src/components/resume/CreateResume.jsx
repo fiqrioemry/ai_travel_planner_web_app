@@ -5,13 +5,17 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Loader2, Plus } from "lucide-react";
+import { useUser } from "@clerk/clerk-react";
 import { useCallback, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { resumeInitialState } from "@/config/state";
 import { useResumeStore } from "@/store/useResumeStore";
 
 const CreateResume = () => {
+  const { user } = useUser();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { createNewResume, loading } = useResumeStore();
   const [formData, setFormData] = useState(resumeInitialState);
@@ -33,9 +37,9 @@ const CreateResume = () => {
   };
 
   const handleCreateResume = async () => {
-    const { resumeId } = await createNewResume;
+    const resume = await createNewResume(user, formData);
     setIsOpen(false);
-    navigation("/resume/" + resumeId + "/edit");
+    navigate("/resume/" + resume.id + "/edit");
   };
 
   const handleCloseDialog = () => {

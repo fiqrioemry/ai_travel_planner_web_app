@@ -2,10 +2,10 @@
 import Home from "./pages/Home";
 import MyResume from "./pages/MyResume";
 import NotFound from "./pages/NotFound";
+import EditResume from "./pages/EdiResume";
 import ViewResume from "./pages/ViewResume";
 import ClerkSignIn from "./pages/ClerkSignIn";
 import ClerkSignUp from "./pages/ClerkSignUp";
-import CreateResume from "./pages/CreateResume";
 import LoadingPage from "./components/LoadingPage";
 
 // configuration
@@ -73,10 +73,10 @@ function App() {
             }
           />
           <Route
-            path="resume/create-resume"
+            path="resume/:resumeId/edit"
             element={
               <ProtectedRoute>
-                <CreateResume />
+                <EditResume />
               </ProtectedRoute>
             }
           />
