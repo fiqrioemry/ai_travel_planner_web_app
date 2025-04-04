@@ -9,6 +9,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import { useUser, SignOutButton } from "@clerk/clerk-react";
 import { Moon, Sun, User, LogOut, FileText } from "lucide-react";
+import ManageAccount from "../ManageAccount";
 
 function Header() {
   const { user } = useUser();
@@ -63,11 +64,8 @@ const UserMenu = ({ user, isDark, toggleDark }) => {
             <span>{isDark ? "Dark Mode" : "Light Mode"}</span>
           </div>
 
-          {/* Profile */}
-          <a href="/profile" className={menuItemClass}>
-            <User size={18} />
-            <span>Profile</span>
-          </a>
+          {/* manage account */}
+          <ManageAccount />
 
           {/* Resume */}
           <a href="/resume" className={menuItemClass}>
