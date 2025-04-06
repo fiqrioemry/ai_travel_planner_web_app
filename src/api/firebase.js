@@ -2,8 +2,6 @@ import { getAuth } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-// TODO: Add SDKs for Firebase products that you want to use
-
 const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_API_ID,
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
