@@ -12,10 +12,10 @@ const EditResume = () => {
   const { getResumeDetail, resume } = useResumeStore();
 
   const [form, setForm] = useState({
-    theme: resume?.theme,
-    profile: resume?.profile,
-    education: resume?.education,
-    work_experience: resume?.work_experience,
+    theme: resume?.theme || "",
+    profile: resume?.profile || [],
+    education: resume?.education || {},
+    work_experience: resume?.work_experience || {},
   });
 
   useEffect(() => {

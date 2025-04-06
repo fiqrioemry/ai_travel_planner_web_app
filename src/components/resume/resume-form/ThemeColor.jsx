@@ -1,18 +1,19 @@
+/* eslint-disable react/prop-types */
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
 import { colors } from "@/config/state";
 import { LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-function ThemeColor({ resume }) {
-  const [selectedColor, setSelectedColor] = useState();
-
+function ThemeColor({ setForm, form }) {
   const onColorSelect = (color) => {
-    setSelectedColor(color);
+    setForm((prev) => ({
+      ...prev,
+      theme: color,
+    }));
   };
 
   return (
@@ -30,7 +31,7 @@ function ThemeColor({ resume }) {
               onClick={() => onColorSelect(item)}
               className={`h-5 w-5 rounded-full cursor-pointer
              hover:border-black border
-             ${selectedColor == item && "border border-black"}
+             ${form.theme == item && "border border-black"}
              `}
               style={{
                 background: item,
