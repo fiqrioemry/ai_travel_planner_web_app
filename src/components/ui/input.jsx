@@ -1,44 +1,30 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const variants = {
-  default: "px-3 focus:outline-primary border rounded-md",
-  flushed: "focus:border-primary outline-transparent border-b-2 ",
-  subtle: "px-3 focus:outline-primary bg-muted rounded-md ",
-  floating: "px-3 focus:outline-primary border rounded-md ",
-};
-
 const Input = React.forwardRef(
-  ({ className, type, variant = "default", ...props }, ref) => {
+  (
+    { className, label, name, value, field, handleChange, type, ...props },
+    ref
+  ) => {
     return (
-      <div className={cn("relative w-full")}>
+      <div className="flex flex-col gap-2 w-full">
+        <label>{label}</label>
         <input
           type={type}
+          name={name}
+          value={value}
+          onChange={(e) => handleChange(e, field)}
           className={cn(
-            "peer w-full bg-transparent text-base transition-all py-2",
-            variants[variant],
+            "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
             className
           )}
           ref={ref}
           {...props}
-          placeholder={variant !== "floating" ? props.placeholder : " "}
         />
-        {variant === "floating" && props.placeholder && (
-          <label
-            className={cn(
-              "absolute left-3 px-1 top-1/2 transform bg-background capitalize -translate-y-1/2 text-muted-foreground transition-all pointer-events-none",
-              "peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-muted-foreground",
-              "peer-focus:top-0 peer-focus:text-sm peer-focus:text-primary"
-            )}
-          >
-            {props.placeholder}
-          </label>
-        )}
       </div>
     );
   }
 );
-
 Input.displayName = "Input";
 
 export { Input };

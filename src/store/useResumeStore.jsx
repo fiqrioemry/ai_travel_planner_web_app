@@ -11,7 +11,6 @@ export const useResumeStore = create((set) => ({
   loading: false,
 
   createNewResume: async (user, formData) => {
-    console.log(user);
     const user_id = user?.id;
     const dataToInsert = {
       ...formData,
@@ -26,8 +25,6 @@ export const useResumeStore = create((set) => ({
         .single();
       if (error) throw error;
       toast.success("Success Create New Resume");
-      console.log(data);
-      console.log(error);
       return data?.id;
     } catch (error) {
       toast.error("Failed to create resume");
@@ -35,12 +32,12 @@ export const useResumeStore = create((set) => ({
     }
   },
 
-  getAllResumes: async (userId) => {
+  getAllResumes: async (user_id) => {
     try {
       const { data, error } = await supabase
         .from("resumes")
         .select("*")
-        .eq("user_id", userId)
+        .eq("user_id", user_id)
         .order("created_at", { ascending: false });
 
       if (error) throw error;
@@ -51,12 +48,12 @@ export const useResumeStore = create((set) => ({
     }
   },
 
-  getResumeDetail: async (resumeId, userId) => {
+  getResumeDetail: async (resumeId, user_id) => {
     try {
       const { data, error } = await supabase
         .from("resumes")
         .select("*")
-        .eq("user_id", userId)
+        .eq("user_id", user_id)
         .eq("id", resumeId);
 
       if (error) throw error;

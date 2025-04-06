@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { useParams } from "react-router-dom";
 import LoadingPage from "@/components/LoadingPage";
@@ -11,6 +11,13 @@ const EditResume = () => {
   const { resumeId } = useParams();
   const { getResumeDetail, resume } = useResumeStore();
 
+  const [form, setForm] = useState({
+    theme: resume?.theme,
+    profile: resume?.profile,
+    education: resume?.education,
+    work_experience: resume?.work_experience,
+  });
+
   useEffect(() => {
     getResumeDetail(resumeId, user.id);
   }, [getResumeDetail, resumeId, user.id]);
@@ -19,8 +26,8 @@ const EditResume = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 p-10 gap-10">
-      <ResumeForm resume={resume} />
-      <ResumePreview resume={resume} />
+      <ResumeForm form={form} setForm={setForm} />
+      <ResumePreview form={form} />
     </div>
   );
 };

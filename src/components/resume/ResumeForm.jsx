@@ -1,26 +1,23 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useResumeStore } from "@/store/useResumeStore";
+import { Textarea } from "@/components/ui/textarea";
 import ThemeColor from "@/components/resume/ThemeColor";
+import { useResumeStore } from "@/store/useResumeStore";
 
-const ResumeForm = ({ resume }) => {
+const ResumeForm = ({ form, setForm }) => {
   const [step, setStep] = useState(1);
   const { updateResumeField } = useResumeStore();
-  const [form, setForm] = useState({
-    theme: resume.theme,
-    profile: resume.profile?.[0] || {},
-    education: resume.education?.[0] || {},
-    workExperience: resume.workExperience?.[0] || {},
-  });
 
-  const handleChange = (section, field, value) => {
+  const handleChange = (e, field) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [section]: {
-        ...prev[section],
-        [field]: value,
+      [field]: {
+        ...prev[field],
+        [name]: value,
       },
     }));
   };
@@ -31,7 +28,7 @@ const ResumeForm = ({ resume }) => {
       education: [form.education],
       work_experience: [form.workExperience],
     };
-    await updateResumeField(resume.id, payload);
+    await updateResumeField(form.id, payload);
     toast.success("Resume updated");
   };
 
@@ -40,97 +37,122 @@ const ResumeForm = ({ resume }) => {
       case 1:
         return (
           <div className="space-y-4">
-            <Input
-              label="First Name"
-              value={form.profile.firstName}
-              onChange={(e) =>
-                handleChange("profile", "firstName", e.target.value)
-              }
-            />
-            <Input
-              label="Last Name"
-              value={form.profile.lastName}
-              onChange={(e) =>
-                handleChange("profile", "lastName", e.target.value)
-              }
-            />
-            <Input
-              label="Job Title"
-              value={form.profile.jobTitle}
-              onChange={(e) =>
-                handleChange("profile", "jobTitle", e.target.value)
-              }
-            />
-            <Input
-              label="Email"
-              value={form.profile.email}
-              onChange={(e) => handleChange("profile", "email", e.target.value)}
-            />
-            <Input
+            <div className="flex gap-2">
+              <Input
+                type="text"
+                field="profile"
+                name="first_name"
+                label="First name"
+                handleChange={handleChange}
+                value={form.profile.first_name}
+              />
+              <Input
+                type="text"
+                name="last_name"
+                field="profile"
+                label="Last name"
+                handleChange={handleChange}
+                value={form.profile.last_name}
+              />
+            </div>
+
+            <div className="flex gap-2">
+              <Input
+                type="text"
+                label="Phone"
+                name="phone"
+                field="profile"
+                value={form.profile.phone}
+                handleChange={handleChange}
+              />
+              <Input
+                type="text"
+                label="Email"
+                name="email"
+                field="profile"
+                value={form.profile.email}
+                handleChange={handleChange}
+              />
+            </div>
+            <Textarea
+              name="address"
               label="Address"
+              field="profile"
+              handleChange={handleChange}
               value={form.profile.address}
-              onChange={(e) =>
-                handleChange("profile", "address", e.target.value)
-              }
             />
-            <Input
-              label="Phone"
-              value={form.profile.phone}
-              onChange={(e) => handleChange("profile", "phone", e.target.value)}
-            />
-            <Input
+
+            <Textarea
+              name="summary"
               label="Summary"
+              field="profile"
+              handleChange={handleChange}
               value={form.profile.summary}
-              onChange={(e) =>
-                handleChange("profile", "summary", e.target.value)
-              }
             />
-            <Input
-              label="LinkedIn"
-              value={form.profile.linkedin}
-              onChange={(e) =>
-                handleChange("profile", "linkedin", e.target.value)
-              }
-            />
+
+            <div className="flex gap-2">
+              <Input
+                type="text"
+                label="job title"
+                name="job_title"
+                field="profile"
+                handleChange={handleChange}
+                value={form.profile.job_title}
+              />
+              <Input
+                type="text"
+                label="Linkedin"
+                name="linkedin"
+                field="profile"
+                handleChange={handleChange}
+                value={form.profile.linkedin}
+              />
+            </div>
           </div>
         );
       case 2:
         return (
           <div className="space-y-4">
             <Input
+              type="text"
+              field="education"
               label="University"
+              name="university"
+              handleChange={handleChange}
               value={form.education.university}
-              onChange={(e) =>
-                handleChange("education", "university", e.target.value)
-              }
             />
+
             <Input
-              label="Degree"
+              type="text"
+              name="degree"
+              label="degree"
+              field="education"
+              handleChange={handleChange}
               value={form.education.degree}
-              onChange={(e) =>
-                handleChange("education", "degree", e.target.value)
-              }
             />
             <Input
+              type="text"
+              name="major"
               label="Major"
+              field="education"
+              handleChange={handleChange}
               value={form.education.major}
-              onChange={(e) =>
-                handleChange("education", "major", e.target.value)
-              }
             />
             <Input
-              label="Start Date"
-              value={form.education.startDate}
-              onChange={(e) =>
-                handleChange("education", "startDate", e.target.value)
-              }
+              type="date"
+              name="start_date"
+              label="start date"
+              field="education"
+              handleChange={handleChange}
+              value={form.education.start_date}
             />
             <Input
-              label="End Date"
-              value={form.education.endDate}
-              onChange={(e) =>
-                handleChange("education", "endDate", e.target.value)
-              }
+              type="date"
+              name="end_date"
+              label="end date"
+              field="education"
+              handleChange={handleChange}
+              value={form.education.end_date}
             />
             <Input
               label="Description"
@@ -153,14 +175,14 @@ const ResumeForm = ({ resume }) => {
             />
             <Input
               label="Company"
-              value={form.workExperience.company}
+              value={form.work_experience.company}
               onChange={(e) =>
                 handleChange("workExperience", "company", e.target.value)
               }
             />
             <Input
               label="Location"
-              value={form.workExperience.location}
+              value={form.work_experience.location}
               onChange={(e) =>
                 handleChange("workExperience", "location", e.target.value)
               }
@@ -200,7 +222,7 @@ const ResumeForm = ({ resume }) => {
           <Button variant="outline" size="sm">
             Home
           </Button>
-          <ThemeColor resume={resume} />
+          <ThemeColor resume={form} />
         </div>
         <Button size="sm" onClick={() => setStep(step + 1 <= 3 ? step + 1 : 3)}>
           Next
@@ -219,15 +241,3 @@ const ResumeForm = ({ resume }) => {
 };
 
 export default ResumeForm;
-
-const Input = ({ label, value, onChange }) => (
-  <div className="flex flex-col">
-    <label className="text-sm font-medium mb-1">{label}</label>
-    <input
-      type="text"
-      value={value || ""}
-      onChange={onChange}
-      className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-);

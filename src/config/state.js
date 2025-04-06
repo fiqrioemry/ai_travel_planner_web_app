@@ -2,8 +2,8 @@ const educationState = {
   university: '',
   degree: '',
   major: '',
-  startDate: '',
-  endDate: '',
+  start_date: '',
+  end_date: '',
   description: '',
 };
 
@@ -11,15 +11,15 @@ const experienceState = {
   position: '',
   company: '',
   location: '',
-  startDate: '',
-  endDate: '',
+  start_date: '',
+  end_date: '',
   jobDesc: '',
 };
 
 const profileState = {
-  firstName: '',
-  lastName: '',
-  jobTitle: '',
+  first_name: '',
+  last_name: '',
+  job_title: '',
   email: '',
   address: '',
   phone: '',
@@ -31,7 +31,7 @@ export const resumeInitialState = {
   user_id: '',
   title: '',
   theme: '',
-  profile: [profileState],
+  profile: profileState,
   education: [educationState],
   work_experience: [experienceState],
 };
