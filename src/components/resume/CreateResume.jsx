@@ -38,8 +38,9 @@ const CreateResume = () => {
 
   const handleCreateResume = async () => {
     const resume = await createNewResume(user, formData);
+    console.log(resume);
     setIsOpen(false);
-    navigate("/resume/" + resume.id + "/edit");
+    navigate(`/resume/${resume.id}/edit`);
   };
 
   const handleCloseDialog = () => {

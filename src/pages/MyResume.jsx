@@ -18,18 +18,17 @@ const MyResume = () => {
   const isEmpty = resumes.length === 0;
 
   return (
-    <section className="container mx-auto py-12">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold">My Resumes</h1>
+    <section className="container mx-auto py-12 px-4">
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-bold tracking-tight">🎓 My Resumes</h1>
+        {!isEmpty && <CreateResume />}
       </div>
 
       {isEmpty ? (
-        <div className="text-center py-20">
-          <h2 className="text-xl font-semibold mb-2">
-            You have no resumes yet
-          </h2>
+        <div className="text-center py-20 bg-gray-50 dark:bg-gray-800 rounded-xl">
+          <h2 className="text-2xl font-semibold mb-2">No resumes found</h2>
           <p className="text-gray-500 mb-6">
-            Start creating your first resume now.
+            You haven’t created any resumes yet. Let’s get started!
           </p>
           <CreateResume />
         </div>
@@ -38,18 +37,21 @@ const MyResume = () => {
           {resumes.map((resume) => (
             <div
               key={resume.id}
-              className="border p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-900"
+              className="border p-5 rounded-2xl bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-all duration-300"
             >
-              <h3 className="text-lg font-medium">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
                 {resume.title || "Untitled Resume"}
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Last updated:{" "}
                 {resume.updatedAt
                   ? new Date(resume.updatedAt).toLocaleDateString()
-                  : "No date"}
+                  : "Unknown"}
               </p>
               <div className="flex justify-end">
-                <Button size="sm">View</Button>
+                <Button size="sm" variant="secondary">
+                  View
+                </Button>
               </div>
             </div>
           ))}
