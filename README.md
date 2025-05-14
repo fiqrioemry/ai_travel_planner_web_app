@@ -1,7 +1,8 @@
+![Thumbnail](./public/thumbnail.png)
+
 # 🛍️ Travelo - AI Trip Planner Web App
 
 Travelo adalah aplikasi perencana perjalanan berbasis web yang menggunakan teknologi AI untuk membantu pengguna merancang itinerary perjalanan mereka secara otomatis, personal, dan cerdas hanya dalam hitungan detik. 
-![Thumbnail](./public/thumbnail.png)
 
 ## ✨ Short Description
 
