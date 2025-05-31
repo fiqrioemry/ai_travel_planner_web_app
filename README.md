@@ -136,8 +136,8 @@ Open for contributions to improve features:
 
 ## 👤 Developer - Author
 
-- Name: Ahmad Fiqri Oemmry  
-- 📧 Email: fiqrioemry@gmail.com  
+- Name: Ahmad Fiqri Oemry  
+- 📧 Email: ahmadfiqrioemry@gmail.com  
 - 🌐 LinkedIn: [linkedin.com/in/ahmadfiqrioemry](https://www.linkedin.com/in/ahmadfiqrioemry)
 
 ## 🖼️ Preview
