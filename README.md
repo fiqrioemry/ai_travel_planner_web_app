@@ -2,46 +2,47 @@
 
 # 🛍️ Travelo - AI Trip Planner Web App
 
-Travelo adalah aplikasi perencana perjalanan berbasis web yang menggunakan teknologi AI untuk membantu pengguna merancang itinerary perjalanan mereka secara otomatis, personal, dan cerdas hanya dalam hitungan detik. 
+**Travelo** is a web-based travel planning application powered by AI that helps users automatically generate personalized and intelligent travel itineraries in just seconds.
 
 ## ✨ Short Description
 
-Travelo memungkinkan pengguna memilih preferensi liburan (lokasi keberangkatan, tujuan, durasi, anggaran, dll), dan menghasilkan rencana perjalanan harian yang lengkap, termasuk aktivitas, transportasi, rekomendasi hotel, dan tips wisata. Aplikasi ini didukung oleh AI (Gemini), Firebase, dan React ecosystem.
+Travelo allows users to select their travel preferences (departure location, destination, duration, budget, etc.) and generates a full-day itinerary that includes activities, transportation, hotel recommendations, and travel tips. The app is built using AI (Gemini), Firebase, and the React ecosystem.
 
 ## 🚀 Main Features
 
-- 🔐 Login dengan Google (Firebase Auth)
-- 📍 Pilihan kota keberangkatan & tujuan
-- 🧠 Generasi itinerary otomatis dengan AI 
-- 🏨 Rekomendasi hotel & aktivitas harian
-- 🔖 Simpan & lihat detail trip yang telah dibuat
-- 🌙 Mode terang/gelap (dark mode toggle)
-- 🗑️ Hapus rencana perjalanan dengan konfirmasi
-- 📱 Responsif dan mudah digunakan
+- 🔐 Google login (Firebase Auth)
+- 📍 Departure & destination city selection
+- 🧠 AI-generated itinerary
+- 🏨 Hotel & daily activity recommendations
+- 🔖 Save and view detailed trip plans
+- 🌙 Light/Dark mode toggle
+- 🗑️ Delete trip plans with confirmation
+- 📱 Responsive and user-friendly interface
 
-## ⚙️ Tech-Stack
+## ⚙️ Tech Stack
 
-### Front-end
+### Frontend
 
-- React using Typescript
+- React with Typescript
 - React Router
 - Zustand (State Management)
-- Framer Motion (Animasi)
+- Framer Motion (Animations)
 - TailwindCSS (Styling)
-- ShadCN UI / Headless UI untuk komponen Dialog
+- ShadCN UI / Headless UI (for Dialog components)
 
 ### Backend / Services
 
 - Firebase Firestore
 - Firebase Auth (Google Login)
 - Gemini API (Google)
-- Geoapify API (lokasi)
+- Geoapify API (for location)
 
 ## 🧰 Installation and Setup
 
-Follow these steps to get the project up and running on your local machine:
+Follow these steps to run the project locally:
 
-1. Clone this repository:
+1. Clone the repository:
+
 
 ```
 git clone https://github.com/fiqrioemry/ai_travel_planner_web_app.git
@@ -60,7 +61,7 @@ npm install
 npm rum
 ```
 
-App akan berjalan di http://localhost:5173
+App will be running on http://localhost:5173
 
 ## 📁 Folder Structure
 
@@ -76,25 +77,22 @@ App akan berjalan di http://localhost:5173
 │   └── main.tsx           # Entry point React
 ```
 
-## 🧪 How to use
+## 🧪 How to Use
 
-1. Login
+1. **Login**
+   - Click the “Get Started” button on the homepage and log in with Google.
 
-- Klik tombol "Ayo mulai" di halaman utama, lalu login dengan Google.
+2. **Create a Trip**
+   - Go to `/create-trip`, fill out all trip preferences via a step-by-step UI, and click "Generate Trip".
 
-2. Buat Trip
+3. **Save & View Trip Details**
+   - Successfully generated trips will be stored in Firebase and can be revisited at `/my-trips`. Click on a card to view full details.
 
-- Navigasi ke /create-trip, isi semua preferensi perjalanan (dengan UI step-by-step), lalu klik "Generate Trip".
+4. **Delete a Trip**
+   - Click the 🖑 icon at the top-right of a trip card. A confirmation dialog will appear before deletion.
 
-3. Simpan & Lihat Detail Trip
+## 🔐 Environment Configuration (.env)
 
-- Trip yang berhasil dibuat akan disimpan ke Firebase dan bisa dilihat kembali di /my-trips. Klik salah satu kartu untuk melihat detail lengkap.
-
-4. Hapus Trip
-
-- Klik ikon 🖑 di pojok kanan kartu trip. Konfirmasi dialog akan muncul sebelum dihapus permanen.
-
-## 🔐 Konfigurasi Environment (.env)
 
 ```
 VITE_FIREBASE_API_KEY=your_api_key
@@ -109,45 +107,51 @@ VITE_GEOAPIFY_KEY=your_geoapify_key
 
 ## ☁️ Deployment
 
-saya menggunakan web-hosting untuk project ini, namun kamu juga bisa mendeploy ke platform Saas seperti vercel ataupun netlify :
+This project is hosted using a web hosting provider, but you can also deploy it to SaaS platforms such as **Vercel** or **Netlify**:
 
-- Hubungkan repo Git
-- Tambahkan .env ke dashboard environment
-- Atur build command:
+- Connect your Git repository
+- Add environment variables in the dashboard
+- Set build command:
 
 ```
   npm run build
 ```
 
-Output directory: dist
 
-## 🤝 Kontribusi
+- Output directory: `dist`
 
-Terbuka untuk Kontribusi bagi yang ingin mengembangkan fitur lebih jauh :
+## 🤝 Contribution
 
-- Fork repository ini
-- Buat branch: git checkout -b fitur-anda
-- Commit perubahan: git commit -m 'feat: fitur baru'
-- Push ke branch: git push origin fitur-anda
-- Buka Pull Request
+Open for contributions to improve features:
 
-## License
+- Fork the repository
+- Create a new branch: `git checkout -b your-feature`
+- Commit changes: `git commit -m 'feat: your feature'`
+- Push your branch: `git push origin your-feature`
+- Open a Pull Request
+
+## 🪪 License
 
 **MIT License**
 
-##👤 Developer - Author
+## 👤 Developer - Author
 
-- name : Ahmad Fiqri oemmry
-- 📁 email : fiqrioemry@gmail.com
-- 🌐 Linkedin : https://www.linkedin.com/in/ahmadfiqrioemry
+- Name: Ahmad Fiqri Oemmry  
+- 📧 Email: fiqrioemry@gmail.com  
+- 🌐 LinkedIn: [linkedin.com/in/ahmadfiqrioemry](https://www.linkedin.com/in/ahmadfiqrioemry)
 
 ## 🖼️ Preview
 
-Berikut adalah beberapa preview tampilan untuk halaman website travel planner ini. Homepage Create Trip Detail Trip My Trip List
+Below are some previews of the AI travel planner web pages:
 
-![Preview1](./public/preview1.png)
-![Preview2](./public/preview2.png)
-![Preview3](./public/preview3.png)
+**Homepage**  
+**Create Trip**  
+**Trip Details**  
+**My Trip List**
+
+![Preview1](./public/preview1.png)  
+![Preview2](./public/preview2.png)  
+![Preview3](./public/preview3.png)  
 ![Preview4](./public/preview4.png)
 
 
